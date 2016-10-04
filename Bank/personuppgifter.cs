@@ -14,7 +14,6 @@ namespace Bank
 
         public void getpersonuppgifter(Bank bank)
         {
-            
             string[] person = File.ReadAllLines(@"C:\Users\Mario\Desktop\bank.txt");
 
             string personuppgift = (from pers in person

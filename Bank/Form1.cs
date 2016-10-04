@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Bank
 {
@@ -31,14 +32,34 @@ namespace Bank
 
         private void btnVisa_Click(object sender, EventArgs e)
         {
-            nyperson.Personnummer = txtPersonmr.Text;
-            nyperson.getpersonuppgifter(this);
+            if (txtPersonmr.Text == "")
+            {
+                MessageBox.Show("Skriv in ett personnummer.");
+            }
+            else
+            {
 
-            txtNamn.Text = Namn;
-            txtMail.Text = Mail;
-            txtPersonnummer.Text = Personnummer;
-            txtSaldo.Text = Saldo;
-            txtAdress.Text = Adress;
+                try
+                {
+                    nyperson.Personnummer = txtPersonmr.Text;
+                    nyperson.getpersonuppgifter(this);
+
+                }
+                catch (Exception b)
+                {
+                    MessageBox.Show(b.Message);
+                    using (StreamWriter writer = new StreamWriter(@"C:\Users\Mario\Desktop\Github\Bank\error.txt", true))
+                    {
+                        writer.WriteLine("Message: " + b.Message  + Environment.NewLine + "Date: " + DateTime.Now.ToString());
+                        writer.WriteLine(Environment.NewLine + "----------------------------------");
+                    }
+                }
+                txtNamn.Text = Namn;
+                txtMail.Text = Mail;
+                txtPersonnummer.Text = Personnummer;
+                txtSaldo.Text = Saldo;
+                txtAdress.Text = Adress;
+            }
         }
     }
 }
