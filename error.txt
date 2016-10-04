@@ -6,3 +6,7 @@ Message: Det gick inte att hitta filen C:\Users\Mario\Desktop\bankk.txt.<br/>
 Date: 2016-10-04 16:46:13
 
 ----------------------------------
+Message: Sekvensen innehåller inga element
+Date: 2016-10-04 18:34:24
+
+----------------------------------

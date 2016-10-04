@@ -32,9 +32,14 @@ namespace Bank
 
         private void btnVisa_Click(object sender, EventArgs e)
         {
-            if (txtPersonmr.Text == "")
+           
+        }
+
+        private void gButton1_Click(object sender, EventArgs e)
+        {
+            if (txtPersonmr.Text == "" || txtPersonmr.TextLength <= 9)
             {
-                MessageBox.Show("Skriv in ett personnummer.");
+                MessageBox.Show("Skriv in rätt personnummer.");
             }
             else
             {
@@ -50,7 +55,7 @@ namespace Bank
                     MessageBox.Show(b.Message);
                     using (StreamWriter writer = new StreamWriter(@"C:\Users\Mario\Desktop\Github\Bank\error.txt", true))
                     {
-                        writer.WriteLine("Message: " + b.Message  + Environment.NewLine + "Date: " + DateTime.Now.ToString());
+                        writer.WriteLine("Message: " + b.Message + Environment.NewLine + "Date: " + DateTime.Now.ToString());
                         writer.WriteLine(Environment.NewLine + "----------------------------------");
                     }
                 }
@@ -60,6 +65,11 @@ namespace Bank
                 txtSaldo.Text = Saldo;
                 txtAdress.Text = Adress;
             }
+        }
+
+        private void gButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
